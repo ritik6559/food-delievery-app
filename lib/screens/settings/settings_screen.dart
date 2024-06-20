@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fooddelieveryapp/themes/light_mode.dart';
 import 'package:fooddelieveryapp/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
