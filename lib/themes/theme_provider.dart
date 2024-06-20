@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fooddelieveryapp/themes/dark_mode.dart';
 import 'package:fooddelieveryapp/themes/light_mode.dart';
 
-class ThemeProvider extends ChangeNotifier {
+class ThemeProvider with ChangeNotifier {
   ThemeData _themeData = lightMode;
 
   ThemeData get themeData => _themeData;

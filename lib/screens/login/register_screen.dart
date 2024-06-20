@@ -1,0 +1,100 @@
+import 'package:flutter/material.dart';
+import 'package:fooddelieveryapp/components/my_button.dart';
+import 'package:fooddelieveryapp/components/my_textfield.dart';
+
+class RegisterScreen extends StatefulWidget {
+  final void Function()? onTap;
+  const RegisterScreen({super.key,required this.onTap});
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
+
+  void register(){
+    
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.lock_open_rounded,
+                size: 100,
+                color: Theme.of(context).colorScheme.inversePrimary,
+              ),
+              const SizedBox(height: 25),
+              Text(
+                'Let\'s create an account',
+                style: TextStyle(
+                    fontSize: 16,
+                    color: Theme.of(context).colorScheme.inversePrimary),
+              ),
+              const SizedBox(height: 25),
+              MyTextField(
+                hint: 'name',
+                obscureText: false,
+                controller: nameController,
+              ),
+              const SizedBox(height: 25),
+              MyTextField(
+                hint: 'email',
+                obscureText: false,
+                controller: emailController,
+              ),
+              const SizedBox(height: 25),
+              MyTextField(
+                hint: 'password',
+                obscureText: true,
+                controller: passwordController,
+              ),
+              const SizedBox(height: 25),
+              MyTextField(
+                hint: 'confirm password',
+                obscureText: true,
+                controller: confirmPasswordController,
+              ),
+              MyButton(
+                text: 'Sgn in',
+                onTap: register,
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Alreay a member?',
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.inversePrimary),
+                  ),
+                  GestureDetector(
+                    onTap: widget.onTap,
+                    child: Text(
+                      ' Sign in',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.inversePrimary,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
