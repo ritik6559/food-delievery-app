@@ -29,11 +29,11 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/burgers
-    - assets/desserts
-    - assets/salads
-    - assets/sides
-    - assets/drinks
+    - assets/burgers/
+    - assets/desserts/
+    - assets/salads/
+    - assets/sides/
+    - assets/drinks/
 
   # fonts:
   #   - family: Schyler

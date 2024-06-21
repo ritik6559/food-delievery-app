@@ -7,6 +7,7 @@ import 'package:fooddelieveryapp/components/my_food_tile.dart';
 import 'package:fooddelieveryapp/components/my_tab_bar.dart';
 import 'package:fooddelieveryapp/model/food.dart';
 import 'package:fooddelieveryapp/model/restaurant.dart';
+import 'package:fooddelieveryapp/screens/food_detail/food_detail_screen.dart';
 import 'package:provider/provider.dart';
 
 class HomScreen extends StatefulWidget {
@@ -45,7 +46,7 @@ class _HomScreenState extends State<HomScreen>
         physics: const NeverScrollableScrollPhysics(),
         itemCount: categoryMenu.length,
         itemBuilder: (context, index) {
-          return MyFoodTile(food: categoryMenu[index], onTap: (){});
+          return MyFoodTile(food: categoryMenu[index], onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => FoodDetailScreen(food: categoryMenu[index]))));
         },
       );
     }).toList();
