@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fooddelieveryapp/screens/cart_screen/cart_screen.dart';
 
 class MyAppBar extends StatelessWidget {
   final Widget child;
@@ -12,12 +13,16 @@ class MyAppBar extends StatelessWidget {
       floating: false,
       expandedHeight: 340,
       collapsedHeight: 120,
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       foregroundColor: Theme.of(context).colorScheme.inversePrimary,
       title: const Text("Sunset Dinner"),
       actions: [
         IconButton(
-            onPressed: () {}, icon: const Icon(Icons.shopping_cart_sharp))
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const CartScreen()));
+            },
+            icon: const Icon(Icons.shopping_cart_sharp))
       ],
       flexibleSpace: FlexibleSpaceBar(
         background: child,

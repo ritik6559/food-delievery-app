@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fooddelieveryapp/components/my_button.dart';
 import 'package:fooddelieveryapp/model/food.dart';
+import 'package:fooddelieveryapp/model/restaurant.dart';
+import 'package:provider/provider.dart';
 
 class FoodDetailScreen extends StatefulWidget {
   final Food food;
@@ -16,6 +18,19 @@ class FoodDetailScreen extends StatefulWidget {
 }
 
 class _FoodDetailScreenState extends State<FoodDetailScreen> {
+  //method to add to cart
+  void addToCart(Food food, Map<Addon, bool> selectedAddons) {
+    List<Addon> currentlySelectedAddons = [];
+    for (Addon addon in widget.food.availableAddOn) {
+      if (widget.selectedAddons[addon] == true) {
+        currentlySelectedAddons.add(addon);
+      }
+    }
+
+    Provider.of<Restaurant>(context, listen: false)
+        .addToCart(food, currentlySelectedAddons);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -85,7 +100,7 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                     ),
                   ),
                   MyButton(
-                    onTap: () {},
+                    onTap: () => addToCart(widget.food, widget.selectedAddons),
                     text: "Add to cart",
                   ),
                   const SizedBox(height: 25),
@@ -94,17 +109,16 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
             ),
           ),
         ),
-         SafeArea(
-          child:  Align(
+        SafeArea(
+          child: Align(
             alignment: Alignment.topLeft,
             child: IconButton(
-              onPressed: (){
-
-              },
-              icon: const Icon(Icons.arrow_back_ios)),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.arrow_back_ios)),
           ),
         )
-        
       ],
     );
   }
