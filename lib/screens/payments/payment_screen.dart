@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:fooddelieveryapp/components/my_button.dart';
+import 'package:fooddelieveryapp/screens/delievery_progess/delievery_progress_screen.dart';
 
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({super.key});
@@ -47,7 +48,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 onPressed: () {
                   Navigator.of(context).pop();
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => DelieveryProgressScreen()));
+                      builder: (context) => const DelieveryProgressScreen()));
                 },
                 child: const Text("Yes"),
               ),
