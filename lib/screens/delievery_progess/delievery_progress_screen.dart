@@ -1,8 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:fooddelieveryapp/components/my_receipt.dart';
+import 'package:fooddelieveryapp/model/restaurant.dart';
+import 'package:fooddelieveryapp/sevices/database/firebase.dart';
+import 'package:provider/provider.dart';
 
-class DelieveryProgressScreen extends StatelessWidget {
+class DelieveryProgressScreen extends StatefulWidget {
   const DelieveryProgressScreen({super.key});
+
+  @override
+  State<DelieveryProgressScreen> createState() =>
+      _DelieveryProgressScreenState();
+}
+
+class _DelieveryProgressScreenState extends State<DelieveryProgressScreen> {
+  FireStoreService db = FireStoreService();
+  @override
+  void initState() {
+    super.initState();
+    //submit order to database
+    String receipt = context.read<Restaurant>().displayCartReceipt();
+    db.saveOrderToDatabase(receipt);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +96,10 @@ class DelieveryProgressScreen extends StatelessWidget {
               ),
 
               //call button
-              const SizedBox(width: 10,),
-              
+              const SizedBox(
+                width: 10,
+              ),
+
               Container(
                 decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.surface,
