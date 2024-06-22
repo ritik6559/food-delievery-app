@@ -11,20 +11,18 @@ class MyCartTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<Restaurant>(
       builder: (context, value, child) {
-        return Container(
-          child: const Column(
-            children: [
-              Row(
-                children: [
-                  //food image
-
-                  //name and price
-
-                  //increment or decrement counter.
-                ],
-              )
-            ],
-          ),
+        return const Column(
+          children: [
+            Row(
+              children: [
+                //food image
+        
+                //name and price
+        
+                //increment or decrement counter.
+              ],
+            )
+          ],
         );
       },
     );
