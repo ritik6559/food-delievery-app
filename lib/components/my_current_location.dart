@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fooddelieveryapp/model/restaurant.dart';
+import 'package:provider/provider.dart';
 
 class MyCurrentLocation extends StatelessWidget {
   const MyCurrentLocation({super.key});
@@ -8,7 +10,7 @@ class MyCurrentLocation extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title:const Text(
+          title: const Text(
             "Your location",
           ),
           content: const TextField(
@@ -51,11 +53,16 @@ class MyCurrentLocation extends StatelessWidget {
             child: Row(
               children: [
                 //address
-                Text(
-                  "6901 Hollywood Blv",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.inversePrimary,
-                      fontWeight: FontWeight.bold),
+                Consumer<Restaurant>(
+                  builder: (context, restaurant, child) {
+                    return Text(
+                      restaurant.delieveryAddress,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.inversePrimary,
+                        fontWeight: FontWeight.bold
+                      ),
+                    );
+                  },
                 ),
 
                 //drop down menu

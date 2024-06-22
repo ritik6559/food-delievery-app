@@ -338,6 +338,17 @@ class Restaurant extends ChangeNotifier {
   List<Food> get menu => _menu;
   List<CartItem> get getCart => _cart;
 
+  //delievery address
+  String _delieveryAddress = '';
+
+  String get delieveryAddress => _delieveryAddress;
+
+  //update address
+  void updateDelieveryAddress(String newAddress) {
+    _delieveryAddress = newAddress;
+    notifyListeners();
+  }
+
   /*
   
   O P E R A T I O N S
