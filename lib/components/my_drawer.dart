@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:fooddelieveryapp/components/my_drawer_tile.dart';
 import 'package:fooddelieveryapp/screens/settings/settings_screen.dart';
+import 'package:fooddelieveryapp/sevices/auth/auth_services.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
 
+  void logout() {
+    final authServices = AuthServices();
+    authServices.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       child: Padding(
         padding: const EdgeInsets.only(top: 75.0, bottom: 25),
         child: Center(
@@ -44,7 +50,7 @@ class MyDrawer extends StatelessWidget {
               ),
               const Spacer(),
               MyDrawerTile(
-                  text: "L O G O U T", icon: Icons.logout, onTap: () {}),
+                  text: "L O G O U T", icon: Icons.logout, onTap: logout),
             ],
           ),
         ),

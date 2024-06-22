@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fooddelieveryapp/components/my_button.dart';
 import 'package:fooddelieveryapp/components/my_textfield.dart';
-import 'package:fooddelieveryapp/screens/home/home_screen.dart';
+import 'package:fooddelieveryapp/sevices/auth/auth_services.dart';
 
 class LogInScreen extends StatefulWidget {
   final void Function()? onTap;
@@ -15,15 +15,28 @@ class _LogInScreenState extends State<LogInScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  void login() {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => const HomScreen()));
+  void login() async {
+    final authServices = AuthServices();
+
+    try {
+      await authServices.signInWithEmailPassword(
+          emailController.text, passwordController.text);
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const AlertDialog(
+            title: Text("Passwords doesn't match"),
+          );
+        },
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
