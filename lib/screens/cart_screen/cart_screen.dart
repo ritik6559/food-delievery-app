@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fooddelieveryapp/components/my_button.dart';
 import 'package:fooddelieveryapp/components/my_cart_tile.dart';
 import 'package:fooddelieveryapp/model/restaurant.dart';
+import 'package:fooddelieveryapp/screens/payments/payment_screen.dart';
 import 'package:provider/provider.dart';
 
 class CartScreen extends StatelessWidget {
@@ -57,25 +58,32 @@ class CartScreen extends StatelessWidget {
               Expanded(
                 child: Column(
                   children: [
-                    userCart.isEmpty ? const Expanded(child:  Center(child:  Text("Cart empty"))) : 
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: userCart.length,
-                        itemBuilder: (context, index) {
-                          final cartItem = userCart[index];
-                          return MyCartTile(cartItem: cartItem);
-                        },
-                      ),
-                    )
+                    userCart.isEmpty
+                        ? const Expanded(
+                            child: Center(child: Text("Cart empty")))
+                        : Expanded(
+                            child: ListView.builder(
+                              itemCount: userCart.length,
+                              itemBuilder: (context, index) {
+                                final cartItem = userCart[index];
+                                return MyCartTile(cartItem: cartItem);
+                              },
+                            ),
+                          )
                   ],
                 ),
               ),
 
               MyButton(
-                onTap: (){}, 
-              text: "Go to checkout"),
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const PaymentScreen()));
+                  },
+                  text: "Go to checkout"),
 
-              const SizedBox(height: 25,),
+              const SizedBox(
+                height: 25,
+              ),
             ],
           ),
         );
