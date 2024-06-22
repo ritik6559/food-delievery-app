@@ -467,6 +467,7 @@ class Restaurant extends ChangeNotifier {
     receipt.writeln();
     receipt.writeln("Total Item: ${getTotalItemCount()}");
     receipt.writeln("Total Price: ${_formatPrice(getTotalPrice())}");
+    receipt.writeln("Delivering to: $delieveryAddress");
 
     return receipt.toString();
   }

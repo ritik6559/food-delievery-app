@@ -68,7 +68,7 @@ class _HomScreenState extends State<HomScreen>
                         endIndent: 25,
                         color: Theme.of(context).colorScheme.secondary,
                       ),
-                      const MyCurrentLocation(),
+                      MyCurrentLocation(),
                       const MyDescriptionBox(),
                     ],
                   ),
